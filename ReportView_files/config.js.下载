@@ -1,0 +1,1888 @@
+﻿var env = {
+    externalnet: true,  //是否是外网
+    current: 'https://pt.cdzjryb.com' //配置本站服务的远程域（末尾不要添加斜杠），例如:http://127.0.0.1
+    , filesvr: 'https://pt.cdzjryb.com/fileupload' //文件服务器地址
+    , extranet: 'https://pt.cdzjryb.com'
+    , detectionUnitUrlN: 'https://pt.cdzjryb.com/zljc-web-n'
+    , JCWebUrl: 'http://192.0.0.26:801'
+    , newWarnUrl: 'https://pt.cdzjryb.com/cdmaterialprj'
+};
+
+//FastDFS配置
+var IsFastDFSUpload = true;
+var FastDFSSysCode="py-jszljcjg-sys";
+
+var MatCateTemplate = {
+    "0101": "/zljc-web-w/Scripts/json2html/gjyc.js",
+    "0102": "/zljc-web-w/Scripts/json2html/gjjxlj.js",
+    "0103": "/zljc-web-w/Scripts/json2html/gjhj.js",
+    "0104": "/zljc-web-w/Scripts/json2html/hntkz.js",
+    "0105": "/zljc-web-w/Scripts/json2html/hntky.js",
+    "0106": "/zljc-web-w/Scripts/json2html/hntks.js",
+    "0107": "/zljc-web-w/Scripts/json2html/sj_sjky.js",
+    "0108": '/zljc-web-w/Scripts/json2html/jzazcl_z.js',
+    "0109": '/zljc-web-w/Scripts/json2html/jzazcl_qk.js',
+    "0110": '/zljc-web-w/Scripts/json2html/jzazcl_fsjc.js',
+    "0111": '/zljc-web-w/Scripts/json2html/jzazcl_fstl.js',
+    "0112": '/zljc-web-w/Scripts/json2html/jzazcl_sn.js',
+    "0113": '/zljc-web-w/Scripts/json2html/jzazcl_ss.js',
+    "0114": '/zljc-web-w/Scripts/json2html/jzazcl_gjx.js',
+    "0115": '/zljc-web-w/Scripts/json2html/jzazcl_dxdl.js',
+    "0116": '/zljc-web-w/Scripts/json2html/jzazcl_kgcz.js',
+    "0117": '/zljc-web-w/Scripts/json2html/jzazcl_dj.js',
+    "0118": '/zljc-web-w/Scripts/json2html/jzazcl_fjpg.js',
+    "0119": '/zljc-web-w/Scripts/json2html/jzazcl_qtcl.js',
+    "0201": '/zljc-web-w/Scripts/json2html/gjgwj_gc.js',
+    "0202": '/zljc-web-w/Scripts/json2html/gjgwj_hjcl.js',
+    "0203": '/zljc-web-w/Scripts/json2html/gjgwj_gqdls.js',
+    "0204": '/zljc-web-w/Scripts/json2html/gjgwj_jgljj.js',
+    "0205": '/zljc-web-w/Scripts/json2html/gjgwj_lsqhjqjzj.js',
+    "0206": '/zljc-web-w/Scripts/json2html/gjgwj_qtgjg.js',
+    "0301": '/zljc-web-w/Scripts/json2html/bwcl_ymb.js',
+    "0302": '/zljc-web-w/Scripts/json2html/bwcl_gsyb.js',
+    "0303": '/zljc-web-w/Scripts/json2html/bwcl_jsjbyxpmbxpsb.js',
+    "0304": '/zljc-web-w/Scripts/json2html/bwcl_jsjbyxpmbepsb.js',
+    "0305": '/zljc-web-w/Scripts/json2html/bwcl_jfjbkl.js',
+    "0306": '/zljc-web-w/Scripts/json2html/bwcl_klsj.js',
+    "0307": '/zljc-web-w/Scripts/json2html/bwcl_zjsj.js',
+    "0308": '/zljc-web-w/Scripts/json2html/bwcl_bqwgb.js',
+    "0309": '/zljc-web-w/Scripts/json2html/bwcl_gsw.js',
+    "0310": '/zljc-web-w/Scripts/json2html/bwcl_qtbwcl.js',
+    "0401": '/zljc-web-w/Scripts/json2html/zssnhj_zsbc.js',
+    "0402": '/zljc-web-w/Scripts/json2html/zssnhj_smbz.js',
+    "0403": '/zljc-web-w/Scripts/json2html/zssnhj_mc.js',
+    "0404": '/zljc-web-w/Scripts/json2html/zssnhj_xc.js',
+    "0405": '/zljc-web-w/Scripts/json2html/zssnhj_jzaqbl.js',
+    "0406": '/zljc-web-w/Scripts/json2html/zssnhj_zkbl.js',
+    "0407": '/zljc-web-w/Scripts/json2html/zssnhj_gtjgmfj.js',
+    "0408": '/zljc-web-w/Scripts/json2html/zssnhj_trsmsc.js',
+    "0409": '/zljc-web-w/Scripts/json2html/zssnhj_jztl.js',
+    "0410": '/zljc-web-w/Scripts/json2html/zssnhj_qtcl.js',
+    "0501": '/zljc-web-w/Scripts/json2html/gdjtgc_syybmfd.js',
+    "0502": '/zljc-web-w/Scripts/json2html/gdjtgc_lkmfq.js',
+    "0503": '/zljc-web-w/Scripts/json2html/gdjtgc_dqrmcd.js',
+    "0504": '/zljc-web-w/Scripts/json2html/gdjtgc_czjmwqjzsd.js',
+    "0505": '/zljc-web-w/Scripts/json2html/gdjtgc_awsdcqzhpshntycljwjj.js',
+    "0506": '/zljc-web-w/Scripts/json2html/gdjtgc_cqzfxtmgyc.js',
+    "0601": '/zljc-web-w/Scripts/json2html/szdlgc_nqhhlxnjc.js',
+    "0602": '/zljc-web-w/Scripts/json2html/szdlgc_wcxkyjc.js',
+    "0603": '/zljc-web-w/Scripts/json2html/gdjtgc_jg.js',
+    "0604": '/zljc-web-w/Scripts/json2html/szdlgc_qt.js',
+    "0605": '/zljc-web-w/Scripts/json2html/jzazcl_gjhjgysy.js',
+    "0606": '/zljc-web-w/Scripts/json2html/bwcl_blmb.js',
+    "0607": '/zljc-web-w/Scripts/json2html/bwcl_xsbwb.js',
+    "0608": '/zljc-web-w/Scripts/json2html/bwcl_qtazgcbwcl.js',
+    "0609": '/zljc-web-w/Scripts/json2html/zssnhj_nz.js',
+    "0610": '/zljc-web-w/Scripts/json2html/zssnhj_mucai.js',
+    "0611": '/zljc-web-w/Scripts/json2html/zssnhj_mqlg.js',
+    "0612": '/zljc-web-w/Scripts/json2html/jzazcl_cpzzslxg.js',
+    "0613": '/zljc-web-w/Scripts/json2html/jzazcl_pprjsg.js',
+    "0614": '/zljc-web-w/Scripts/json2html/jzazcl_upvcg.js',
+    "0615": '/zljc-web-w/Scripts/json2html/jzazcl_peg.js',
+    "0616": '/zljc-web-w/Scripts/json2html/jzazcl_jj.js',
+    "0617": '/zljc-web-w/Scripts/json2html/jzazcl_qtazgccl.js',
+    "0618": '/zljc-web-w/Scripts/json2html/gjgwj_gjghjgysy.js',
+    "100100050001": "/zljc-web-w/Scripts/json2html/100100050001.js",
+    "100100060001": "/zljc-web-w/Scripts/json2html/100100060001.js",
+    "100500160001": "/zljc-web-w/Scripts/json2html/100500160001.js",
+    "100500170001": "/zljc-web-w/Scripts/json2html/100500170001.js",
+    "100100050002": "/zljc-web-w/Scripts/json2html/100100050002.js",
+    "100500160002": "/zljc-web-w/Scripts/json2html/100500160002.js",
+    "100100060002": "/zljc-web-w/Scripts/json2html/100100060002.js",
+    "100500170002": "/zljc-web-w/Scripts/json2html/100500170002.js",
+    "100100020001": "/zljc-web-w/Scripts/json2html/list_gj_gg_common.js",
+    "100100020002": "/zljc-web-w/Scripts/json2html/list_gj_gg_common.js",
+    "100100020003": "/zljc-web-w/Scripts/json2html/list_gj_gg_common.js",
+    "100100020004": "/zljc-web-w/Scripts/json2html/list_gj_gg_common.js",
+    "100100020005": "/zljc-web-w/Scripts/json2html/list_gj_gg_common.js",
+    "100100020006": "/zljc-web-w/Scripts/json2html/list_gj_gg_common.js",
+    "100100020007": "/zljc-web-w/Scripts/json2html/list_gj_gg_common.js",
+    "100100020008": "/zljc-web-w/Scripts/json2html/list_gj_gg_common_gjhj.js",
+    "100100020009": "/zljc-web-w/Scripts/json2html/list_gj_gg_common_gjhj.js",
+    "100100020010": "/zljc-web-w/Scripts/json2html/list_gj_gg_common_gjjxlj.js",
+    "100100020011": "/zljc-web-w/Scripts/json2html/list_gj_gg_common.js",
+    "100100020012": "/zljc-web-w/Scripts/json2html/list_gj_gg_common.js",
+    "100100020013": "/zljc-web-w/Scripts/json2html/list_gj_gg_common.js",
+    "100500110001": "/zljc-web-w/Scripts/json2html/list_gj_gg_common.js",
+    "100500110002": "/zljc-web-w/Scripts/json2html/list_gj_gg_common.js",
+    "100500110003": "/zljc-web-w/Scripts/json2html/list_gj_gg_common_gjhj.js",
+    "100500110004": "/zljc-web-w/Scripts/json2html/list_gj_gg_common_gjjxlj.js",
+    "100100100001": "/zljc-web-w/Scripts/json2html/list_sj_common_1.js",
+    "100100100002": "/zljc-web-w/Scripts/json2html/list_sj_common.js",
+    "100100100003": "/zljc-web-w/Scripts/json2html/list_sj_common.js",
+    "100100100004": "/zljc-web-w/Scripts/json2html/list_sj_common_2.js",
+    "100100100005": "/zljc-web-w/Scripts/json2html/list_sj_common_3.js",
+    "100100100006": "/zljc-web-w/Scripts/json2html/list_sj_common_2.js",
+    "100100100007": "/zljc-web-w/Scripts/json2html/list_sj_common_2.js",
+    "100500150001": "/zljc-web-w/Scripts/json2html/list_sj_common_1.js",
+    "100500150002": "/zljc-web-w/Scripts/json2html/list_sj_common.js",
+    "100500150003": "/zljc-web-w/Scripts/json2html/list_sj_common.js",
+    "100500150004": "/zljc-web-w/Scripts/json2html/list_sj_common_2.js",
+    "100500150005": "/zljc-web-w/Scripts/json2html/list_sj_common_3.js",
+    "100500150006": "/zljc-web-w/Scripts/json2html/list_sj_common_2.js",
+    "100500150007": "/zljc-web-w/Scripts/json2html/list_sj_common_2.js",
+    "100200010001": "/zljc-web-w/Scripts/json2html/100200010001.js",
+    "100500070001": "/zljc-web-w/Scripts/json2html/100500070001.js",
+    "100500070002": "/zljc-web-w/Scripts/json2html/100500070002.js",
+    "100500210001": "/zljc-web-w/Scripts/json2html/100500210001.js",
+    "100200030002": "/zljc-web-w/Scripts/json2html/100200030002.js",
+    "100100110001": "/zljc-web-w/Scripts/json2html/100100110001.js"
+};
+
+function GetMatCateTemplate(cgCode) {
+    var tempPath = MatCateTemplate[cgCode];
+    if (typeof (tempPath) == typeof (undefined) || tempPath == null) {
+        tempPath = '/zljc-web-w/Scripts/json2html/common.js'
+    }
+    return tempPath;
+}
+
+var SampleTemplate = {
+    "0102": "/zljc-web-w/Scripts/json2html/samples/gj_gjjxlj.js",
+    "0101": "/zljc-web-w/Scripts/json2html/samples/gj_gjyc.js",
+    "0103": "/zljc-web-w/Scripts/json2html/samples/gj_gjhjt.js",
+    "0104": "/zljc-web-w/Scripts/json2html/samples/hnt_hntkz.js",
+    "0105": "/zljc-web-w/Scripts/json2html/samples/hnt_hntky.js",
+    "0106": "/zljc-web-w/Scripts/json2html/samples/hnt_hntks.js",
+    "0107": "/zljc-web-w/Scripts/json2html/samples/sj_sjky.js",
+    "0108": '/zljc-web-w/Scripts/json2html/samples/jzazcl_z.js',
+    "0109": '/zljc-web-w/Scripts/json2html/samples/jzazcl_qk.js',
+    "0110": '/zljc-web-w/Scripts/json2html/samples/jzazcl_fsjc.js',
+    "0111": '/zljc-web-w/Scripts/json2html/samples/jzazcl_fstl.js',
+    "0112": '/zljc-web-w/Scripts/json2html/samples/jzazcl_sn.js',
+    "0113": '/zljc-web-w/Scripts/json2html/samples/jzazcl_ss.js',
+    "0114": '/zljc-web-w/Scripts/json2html/samples/jzazcl_gjx.js',
+    "0115": '/zljc-web-w/Scripts/json2html/samples/jzazcl_dxdl.js',
+    "0116": '/zljc-web-w/Scripts/json2html/samples/jzazcl_kgcz.js',
+    "0117": '/zljc-web-w/Scripts/json2html/samples/jzazcl_dj.js',
+    "0118": '/zljc-web-w/Scripts/json2html/samples/jzazcl_fjpg.js',
+    "0119": '/zljc-web-w/Scripts/json2html/samples/jzazcl_qtcl.js',
+    "0201": '/zljc-web-w/Scripts/json2html/samples/gjgwj_gc.js',
+    "0202": '/zljc-web-w/Scripts/json2html/samples/gjgwj_hjcl.js',
+    "0203": '/zljc-web-w/Scripts/json2html/samples/gjgwj_gqdls.js',
+    "0204": '/zljc-web-w/Scripts/json2html/samples/gjgwj_jgljj.js',
+    "0205": '/zljc-web-w/Scripts/json2html/samples/gjgwj_lsqhjqjzj.js',
+    "0206": '/zljc-web-w/Scripts/json2html/samples/gjgwj_qtgjg.js',
+    "0301": '/zljc-web-w/Scripts/json2html/samples/bwcl_ymb.js',
+    "0302": '/zljc-web-w/Scripts/json2html/samples/bwcl_gsyb.js',
+    "0303": '/zljc-web-w/Scripts/json2html/samples/bwcl_jsjbyxpmbxpsb.js',
+    "0304": '/zljc-web-w/Scripts/json2html/samples/bwcl_jsjbyxpmbepsb.js',
+    "0305": '/zljc-web-w/Scripts/json2html/samples/bwcl_jfjbkl.js',
+    "0306": '/zljc-web-w/Scripts/json2html/samples/bwcl_klsj.js',
+    "0307": '/zljc-web-w/Scripts/json2html/samples/bwcl_zjsj.js',
+    "0308": '/zljc-web-w/Scripts/json2html/samples/bwcl_bqwgb.js',
+    "0309": '/zljc-web-w/Scripts/json2html/samples/bwcl_gsw.js',
+    "0310": '/zljc-web-w/Scripts/json2html/samples/bwcl_qtbwcl.js',
+    "0401": '/zljc-web-w/Scripts/json2html/samples/zssnhj_zsbc.js',
+    "0402": '/zljc-web-w/Scripts/json2html/samples/zssnhj_smbz.js',
+    "0403": '/zljc-web-w/Scripts/json2html/samples/zssnhj_mc.js',
+    "0404": '/zljc-web-w/Scripts/json2html/samples/zssnhj_xc.js',
+    "0405": '/zljc-web-w/Scripts/json2html/samples/zssnhj_jzaqbl.js',
+    "0406": '/zljc-web-w/Scripts/json2html/samples/zssnhj_zkbl.js',
+    "0407": '/zljc-web-w/Scripts/json2html/samples/zssnhj_gtjgmfj.js',
+    "0408": '/zljc-web-w/Scripts/json2html/samples/zssnhj_trsmsc.js',
+    "0409": '/zljc-web-w/Scripts/json2html/samples/zssnhj_jztl.js',
+    "0410": '/zljc-web-w/Scripts/json2html/samples/zssnhj_qtcl.js',
+    "0501": '/zljc-web-w/Scripts/json2html/samples/gdjtgc_syybmfd.js',
+    "0502": '/zljc-web-w/Scripts/json2html/samples/gdjtgc_lkmfq.js',
+    "0503": '/zljc-web-w/Scripts/json2html/samples/gdjtgc_dqrmcd.js',
+    "0504": '/zljc-web-w/Scripts/json2html/samples/gdjtgc_czjmwqjzsd.js',
+    "0505": '/zljc-web-w/Scripts/json2html/samples/gdjtgc_awsdcqzhpshntycljwjj.js',
+    "0506": '/zljc-web-w/Scripts/json2html/samples/gdjtgc_cqzfxtmgyc.js',
+    "0601": '/zljc-web-w/Scripts/json2html/samples/szdlgc_nqhhlxnjc.js',
+    "0602": '/zljc-web-w/Scripts/json2html/samples/szdlgc_wcxkyjc.js',
+    "0603": '/zljc-web-w/Scripts/json2html/samples/szdlgc_qt.js',
+    "0604": '/zljc-web-w/Scripts/json2html/samples/gdjtgc_jg.js',
+    "0605": '/zljc-web-w/Scripts/json2html/samples/jzazcl_gjhjgysy.js',
+    "0606": '/zljc-web-w/Scripts/json2html/samples/bwcl_blmb.js',
+    "0607": '/zljc-web-w/Scripts/json2html/samples/bwcl_xsbwb.js',
+    "0608": '/zljc-web-w/Scripts/json2html/samples/bwcl_qtazgcbwcl.js',
+    "0609": '/zljc-web-w/Scripts/json2html/samples/zssnhj_nz.js',
+    "0610": '/zljc-web-w/Scripts/json2html/samples/zssnhj_mucai.js',
+    "0611": '/zljc-web-w/Scripts/json2html/samples/zssnhj_mqlg.js',
+    "0612": '/zljc-web-w/Scripts/json2html/samples/jzazcl_cpzzslxg.js',
+    "0613": '/zljc-web-w/Scripts/json2html/samples/jzazcl_pprjsg.js',
+    "0614": '/zljc-web-w/Scripts/json2html/samples/jzazcl_upvcg.js',
+    "0615": '/zljc-web-w/Scripts/json2html/samples/jzazcl_peg.js',
+    "0616": '/zljc-web-w/Scripts/json2html/samples/jzazcl_jj.js',
+    "0617": '/zljc-web-w/Scripts/json2html/samples/jzazcl_qtazgccl.js',
+    "0618": '/zljc-web-w/Scripts/json2html/samples/gjgwj_gjghjgysy.js',
+};
+
+function GetSampleTemplate(cgCode) {
+    var tempPath = SampleTemplate[cgCode];
+    if (typeof (tempPath) == typeof (undefined) || tempPath == null) {
+        tempPath = '/zljc-web-w/Scripts/json2html/samples/common.js'
+    }
+    return tempPath;
+}
+
+var Report = {
+    "7838b729-669a-458e-b438-e2f5860417b9": "/zljc-web-w/Scripts/json2html/reports/gjyc.js",
+    "280ae671-52ed-4f82-ade2-0d1a8029287b": "/zljc-web-w/Scripts/json2html/reports/gjhj.js",
+    "88edfbe9-019f-469d-ab33-6fbe09f277e1": "/zljc-web-w/Scripts/json2html/reports/gjjxlj.js",
+    "3bd1a905-f882-40e0-af8f-2151a915eb13": "/zljc-web-w/Scripts/json2html/reports/hntks.js",
+    "e4ee7d54-d106-4e2f-8335-5af0c9ece517": "/zljc-web-w/Scripts/json2html/reports/hntky.js",
+    "abe09877-4b30-4cf6-a04d-470622e13b7f": "/zljc-web-w/Scripts/json2html/reports/hntkz.js",
+    "d94d7049-3a2e-4948-9679-4b027d02770c": "/zljc-web-w/Scripts/json2html/reports/common.js"
+};
+
+//超期时间天数
+var OverTime = 2;
+ 
+var NoticeMsg = {
+    "Msg01": "委托单位只能选择相同类型的单位，施工单位委托检测机构出具的检测报告不得作为工程质量验收资料。"
+};
+//绑定下拉
+var SJDModifyState = [
+    { Name: "审核退回", Value: "1" },
+    { Name: "见证员审核", Value: "2" },
+    { Name: "总监审核", Value: "3" },
+    { Name: "审核通过", Value: "4" },
+    { Name: "撤销申请", Value: "5" }
+]
+//绑定列表状态字段
+var SJDModifyBindState = {
+    "0":"初始" ,
+    "1": "审核退回",
+    "2":"见证员审核",
+    "3":"总监审核",
+    "4": "审核通过",
+    "5":"撤销申请"
+}
+
+
+//绑定下拉
+var SampleModifyState = [
+    { Name: "待审核", Value: "2" },
+    { Name: "审核退回", Value: "1" },
+    { Name: "审核通过", Value: "3" },
+    { Name: "撤销申请", Value: "4" }
+]
+//绑定列表状态字段
+var SampleModifyBindState = {
+    "0": "初始",
+    "1": "审核退回",
+    "2": "见证员审核",
+    "3": "总监审核",
+    "4": "审核通过",
+    "5": "撤销申请"
+}
+
+
+//DetectTask数据
+//ReportUnitState下拉列表
+var DetectTaskDetectPositionDDL = [
+    {
+        Name: "主体结构及装饰装修", Value: "主体结构及装饰装修", Child: [
+            { Name: '混凝土结构构件强度', Value: '混凝土结构构件强度' },
+            { Name: '砌体结构构件强度', Value: '砌体结构构件强度' },
+            { Name: '钢筋及保护层厚度', Value: '钢筋及保护层厚度' },
+            { Name: '植筋锚固力', Value: '植筋锚固力' },
+            { Name: '构件位置和尺寸（涵盖砌体、混凝土、木结构）', Value: '构件位置和尺寸（涵盖砌体、混凝土、木结构）' },
+            { Name: '外观质量及内部缺陷', Value: '外观质量及内部缺陷' },
+            { Name: '装配式混凝土结构节点', Value: '装配式混凝土结构节点' },
+            { Name: '结构构件性能（涵盖砌体、混凝土、木结构）', Value: '结构构件性能（涵盖砌体、混凝土、木结构）' },
+            { Name: '装饰装修工程', Value: '装饰装修工程' },
+            { Name: '室内环境污染物', Value: '室内环境污染物' },
+            { Name: '其他', Value: '其他' }
+
+        ]
+    },
+    {
+        Name: "钢结构", Value: "钢结构", Child: [
+            { Name: '焊缝', Value: '焊缝' },
+            { Name: '钢结构防腐及防火涂装', Value: '钢结构防腐及防火涂装' },
+            { Name: '构件位置与尺寸', Value: '构件位置与尺寸' },
+            { Name: '结构构件性能', Value: '结构构件性能' },
+            { Name: '金属屋面', Value: '金属屋面' },
+            { Name: "其他", Value: "其他" }
+            
+        ]
+    },
+    {
+        Name: "地基基础", Value: "地基基础", Child: [
+            { Name: '地基及复合地基', Value: '地基及复合地基' },
+            { Name: '桩的承载力', Value: '桩的承载力' },
+            { Name: '桩身完整性', Value: '桩身完整性' },
+            { Name: '锚杆抗拔承载力', Value: '锚杆抗拔承载力' },
+            { Name: '地下连续墙', Value: '地下连续墙' },
+            { Name: "其他", Value: "其他" }
+        ]
+    },
+    {
+        Name: "建筑节能", Value: "建筑节能", Child: [
+            { Name: '保温板材与基层粘接', Value: '保温板材与基层粘接' },
+            { Name: '锚固件、锚栓性能', Value: '锚固件、锚栓性能' },
+            { Name: '外墙节能构造', Value: '外墙节能构造' },
+            { Name: '外窗及连接部位性能', Value: '外窗及连接部位性能' },
+            { Name: '设备系统节能性能', Value: '设备系统节能性能' },
+            { Name: '可再生能源应用系统节能性能', Value: '可再生能源应用系统节能性能' },
+            { Name: "其他", Value: "其他" }
+        ]
+    },
+    {
+        Name: "建筑幕墙", Value: "建筑幕墙", Child: [
+            { Name: '节点连接', Value: '节点连接' },
+            { Name: '节点锚栓', Value: '节点锚栓' },
+            { Name: "其他", Value: "其他" }
+        ]
+    },
+    {
+        Name: "道路工程", Value: "道路工程", Child: [
+            { Name: '沥青混合料路面', Value: '沥青混合料路面' },
+            { Name: '基层及底基层', Value: '基层及底基层' },
+            { Name: '土路基', Value: '土路基' },
+            { Name: '排水管道工程', Value: '排水管道工程' },
+            { Name: '水泥混凝土路面', Value: '水泥混凝土路面' },
+            { Name: "其他", Value: "其他" }
+        ]
+    },
+    {
+        Name: "桥梁及地下工程", Value: "桥梁及地下工程", Child: [
+            { Name: '桥梁结构与构件', Value: '桥梁结构与构件' },
+            { Name: '隧道主体结构', Value: '隧道主体结构' },
+            { Name: '桥梁及附属物', Value: '桥梁及附属物' },
+            { Name: '隧道环境', Value: '隧道环境' },
+            { Name: '人行天桥及地下通道', Value: '人行天桥及地下通道' },
+            { Name: '综合管廊主体结构', Value: '综合管廊主体结构' },
+            { Name: '涵洞主体结构', Value: '涵洞主体结构' },
+            { Name: "其他", Value: "其他" }
+        ]
+    }
+]
+
+
+var DetectTaskDetectPositionDDLOld = [
+    {
+        Name: "地基", Value: "地基", Child: [
+            { Name: "地基及复合地基", Value: "地基及复合地基" },
+            { Name: "桩基", Value: "桩基" },
+            { Name: "锚杆", Value: "锚杆" },
+            { Name: "其他", Value: "其他" }
+        ]
+    },
+    {
+        Name: "现场主体结构（含砌体）等现场检测", Value: "现场主体结构（含砌体）等现场检测", Child: [{ Name: "结构实体钢筋保护层厚度、数量（间距）检测", Value: "结构实体钢筋保护层厚度、数量（间距）检测" },
+        { Name: "混凝土砂浆、砌体强度现场检测", Value: "混凝土砂浆、砌体强度现场检测" },
+        { Name: "预制构件结构性能现场检测", Value: "预制构件结构性能现场检测" },
+        { Name: "后置埋件检测", Value: "后置埋件检测" },
+        { Name: "其他", Value: "其他" }
+
+        ]
+    },
+    {
+        Name: "钢结构（含网架）", Value: "钢结构（含网架）", Child: [
+            { Name: "钢结构焊接质量无损检测", Value: "钢结构焊接质量无损检测" },
+            { Name: "钢结构防火及防腐涂装检测", Value: "钢结构防火及防腐涂装检测" },
+            { Name: "钢网架结构变形检测", Value: "钢网架结构变形检测" },
+            { Name: "其他", Value: "其他" }
+        ]
+    },
+    {
+        Name: "装饰（含幕墙）及室内环境", Value: "装饰（含幕墙）及室内环境", Child: [
+            { Name: "面砖粘贴（外墙饰面砖粘接力检测）", Value: "面砖粘贴（外墙饰面砖粘接力检测）" },
+            { Name: "后切式螺栓及化学螺栓", Value: "后切式螺栓及化学螺栓" },
+            { Name: "土壤氡", Value: "土壤氡" },
+            { Name: "室内环境污染", Value: "室内环境污染" },
+            { Name: "其他", Value: "其他" }
+        ]
+    },
+    {
+        Name: "市政道路工程", Value: "市政道路工程", Child: [
+            { Name: "道路面层厚度", Value: "道路面层厚度" },
+            { Name: "道路基层厚度", Value: "道路基层厚度" },
+            { Name: "道路路床厚度", Value: "道路路床厚度" },
+            { Name: "道路其他厚度", Value: "道路其他厚度" },
+            { Name: "道路结构层密实度检测", Value: "道路结构层密实度检测" },
+            { Name: "道路弯沉", Value: "道路弯沉" },
+            { Name: "平整度检测", Value: "平整度检测" },
+            { Name: "其他", Value: "其他" }
+        ]
+    }
+]
+
+var DetectProjectTaskStateDDL = [
+    { Name: "待上传方案", Value: "0" },
+    { Name: "待检测", Value: "1" },
+    { Name: "检测中", Value: "2" },
+    { Name: "检测完成", Value: "3" }
+]
+
+var DetectProjectTaskStateBind = {
+    "0": "待上传方案",
+    "1": "待检测",
+    "2": "检测中",
+    "3": "检测完成",
+    "4": "检测完成"
+}
+
+var DetectTaskReportUnitStateDDL = [
+    { Name: "检测中", Value: "2,3,4,5,6,7" },
+    { Name: "检测完成", Value: "8" }
+]
+
+var DetectTaskReportUnitStateBind = {
+    "0": "初始",
+    "1": "保存",
+    "2": "检测中",
+    "3": "检测中",
+    "4": "检测中",
+    "5": "检测中",
+    "6": "检测中",
+    "7": "检测中",
+    "8": "检测完成"
+}
+
+
+//StepId下拉列表
+var DetectTaskStepIdDDL = [
+    { Name: "上传检测方案", Value: "2" },
+    { Name: "分配检测人员", Value: "3" },
+    { Name: "现场检测中", Value: "4" },
+    { Name: "填写报告信息", Value: "6" },
+    { Name: "上传报告pdf", Value: "7" },
+    { Name: "检测完成", Value: "8" }
+]
+
+var DetectTaskStepIdBind = {
+    "0": "初始",
+    "1": "保存",
+    "2": "上传检测方案",
+    "3": "分配检测人员",
+    "4": "现场检测中",
+    "5": "上传检测原始数据",
+    "6": "填写报告信息",
+    "7": "上传报告pdf",
+    "8": "检测完成"
+}
+
+//检测结果下拉  0-无结论,1-合格、2-不合格
+var TestReportResultDDL = [
+    { Name: "合格", Value: "1" },
+    { Name: "不合格", Value: "2" },
+    { Name: "/", Value: "0" }
+]
+
+var TestReportResultBind = {
+    "0": "/",
+    "1": "合格",
+    "2": "不合格"
+}
+
+
+var DetectPositionTypes = [
+    { name: "地基及复合地基", value: "地基及复合地基", remark: "地基" },
+    { name: "桩基", value: "桩基", remark: "地基" },
+    { name: "锚杆", value: "锚杆", remark: "地基" },
+    { name: "其他", value: "其他", remark: "地基" },
+
+    { name: "结构实体钢筋保护层厚度、数量（间距）检测", value: "结构实体钢筋保护层厚度、数量（间距）检测", remark: "现场主体结构（含砌体）等现场检测" },
+    { name: "混凝土砂浆、砌体强度现场检测", value: "混凝土砂浆、砌体强度现场检测", remark: "现场主体结构（含砌体）等现场检测" },
+    { name: "预制构件结构性能现场检测", value: "预制构件结构性能现场检测", remark: "现场主体结构（含砌体）等现场检测" },
+    { name: "后置埋件检测", value: "后置埋件检测", remark: "现场主体结构（含砌体）等现场检测" },
+    { name: "其他", value: "其他", remark: "现场主体结构（含砌体）等现场检测" },
+
+    { name: "钢结构焊接质量无损检测", value: "钢结构焊接质量无损检测", remark: "钢结构（含网架）" },
+    { name: "钢结构防火及防腐涂装检测", value: "钢结构防火及防腐涂装检测", remark: "钢结构（含网架）" },
+    { name: "钢网架结构变形检测", value: "钢网架结构变形检测", remark: "钢结构（含网架）" },
+    { name: "其他", value: "其他", remark: "钢结构（含网架）" },
+
+    { name: "面砖粘贴（外墙饰面砖粘接力检测）", value: "面砖粘贴（外墙饰面砖粘接力检测）", remark: "装饰（含幕墙）及室内环境" },
+    { name: "后切式螺栓及化学螺栓", value: "后切式螺栓及化学螺栓", remark: "装饰（含幕墙）及室内环境" },
+    { name: "土壤氡", value: "土壤氡", remark: "装饰（含幕墙）及室内环境" },
+    { name: "室内环境污染", value: "室内环境污染", remark: "装饰（含幕墙）及室内环境" },
+    { name: "其他", value: "其他", remark: "装饰（含幕墙）及室内环境" },
+
+    { name: "道路面层厚度", value: "道路面层厚度", remark: "市政道路工程" },
+    { name: "道路基层厚度", value: "道路基层厚度", remark: "市政道路工程" },
+    { name: "道路路床厚度", value: "道路路床厚度", remark: "市政道路工程" },
+    { name: "道路其他厚度", value: "道路其他厚度", remark: "市政道路工程" },
+    { name: "道路结构层密实度检测", value: "道路结构层密实度检测", remark: "市政道路工程" },
+    { name: "道路弯沉", value: "道路弯沉", remark: "市政道路工程" },
+    { name: "平整度检测", value: "平整度检测", remark: "市政道路工程" },
+    { name: "其他", value: "其他", remark: "市政道路工程" }
+];
+
+
+var DirectMaterialTypes = [
+    { name: "装饰材料", value: "装饰材料", remark: "建筑装饰" },
+    { name: "石材", value: "石材", remark: "板材料" },
+    { name: "石膏板", value: "石膏板", remark: "板材料" },
+    { name: "灌浆料", value: "灌浆料", remark: "板材料" },
+    { name: "轻质墙板", value: "轻质墙板", remark: "板材料" },
+    { name: "瓦", value: "瓦", remark: "板材料" },
+    { name: "大理石花岗石板材", value: "大理石花岗石板材", remark: "板材料" },
+    { name: "陶瓷砖", value: "陶瓷砖", remark: "板材料" },
+
+    { name: "构件热阻", value: "构件热阻", remark: "保温隔热材料" },
+    { name: "保温隔热材料", value: "保温隔热材料", remark: "保温隔热材料" },
+
+    { name: "防坠器", value: "防坠器", remark: "建筑机具" },
+    { name: "千斤顶校验", value: "千斤顶校验", remark: "建筑机具" },
+    { name: "建筑器具", value: "建筑器具", remark: "建筑机具" },
+
+    { name: "门", value: "门", remark: "建筑门窗" },
+    { name: "窗", value: "窗", remark: "建筑门窗" },
+    { name: "中空玻璃", value: "中空玻璃", remark: "建筑门窗" },
+
+    { name: "风机盘管机组", value: "风机盘管机组", remark: "暖通空调" },
+    { name: "太阳能光热光电系统", value: "太阳能光热光电系统", remark: "暖通空调" },
+    { name: "暖通空调设备及系统", value: "暖通空调设备及系统", remark: "暖通空调" },
+
+    { name: "建筑照明", value: "建筑照明", remark: "电气管线" },
+    { name: "绝缘检测", value: "绝缘检测", remark: "电气管线" },
+    { name: "开关", value: "开关", remark: "电气管线" },
+    { name: "接地电阻检测", value: "接地电阻检测", remark: "电气管线" },
+    { name: "电工套管", value: "电工套管", remark: "电气管线" },
+    { name: "插座", value: "插座", remark: "电气管线" },
+
+    { name: "建筑石材", value: "建筑石材", remark: "混凝土制品" },
+    { name: "砂浆贯入测强", value: "砂浆贯入测强", remark: "混凝土制品" },
+    { name: "混凝土性能", value: "混凝土性能", remark: "混凝土制品" },
+    { name: "矿渣粉", value: "矿渣粉", remark: "混凝土制品" },
+    { name: "粉煤灰", value: "粉煤灰", remark: "混凝土制品" },
+    { name: "砂浆配合比", value: "砂浆配合比", remark: "混凝土制品" },
+    { name: "卵碎石分析", value: "卵碎石分析", remark: "混凝土制品" },
+    { name: "混凝土外加剂", value: "混凝土外加剂", remark: "混凝土制品" },
+    { name: "砂分析", value: "砂分析", remark: "混凝土制品" },
+    { name: "混凝土配合比", value: "混凝土配合比", remark: "混凝土制品" },
+    { name: "纤维水泥平板", value: "纤维水泥平板", remark: "混凝土制品" },
+    { name: "水泥", value: "水泥", remark: "混凝土制品" },
+    { name: "混凝土用水", value: "混凝土用水", remark: "混凝土制品" },
+
+    { name: "腻子", value: "腻子", remark: "化学建材" },
+    { name: "水泥基渗透结晶型防水材料", value: "水泥基渗透结晶型防水材料", remark: "化学建材" },
+    { name: "建筑涂料", value: "建筑涂料", remark: "化学建材" },
+    { name: "化学分析", value: "化学分析", remark: "化学建材" },
+
+    { name: "炭纤维复合材", value: "炭纤维复合材", remark: "加固材料" },
+    { name: "修补胶", value: "修补胶", remark: "加固材料" },
+    { name: "土工布", value: "土工布", remark: "加固材料" },
+    { name: "弹性橡胶密封垫", value: "弹性橡胶密封垫", remark: "加固材料" },
+    { name: "聚乙烯土工膜", value: "聚乙烯土工膜", remark: "加固材料" },
+    { name: "土工格栅", value: "土工格栅", remark: "加固材料" },
+    { name: "炭纤维符合材浸渍胶", value: "炭纤维符合材浸渍胶", remark: "加固材料" },
+    { name: "石材用建筑密封胶", value: "石材用建筑密封胶", remark: "加固材料" },
+    { name: "密封垫", value: "密封垫", remark: "加固材料" },
+    { name: "锚固用胶粘剂", value: "锚固用胶粘剂", remark: "加固材料" },
+    { name: "硅酮结构密封胶", value: "硅酮结构密封胶", remark: "加固材料" },
+    { name: "粘钢及外粘型刚用胶粘剂", value: "粘钢及外粘型刚用胶粘剂", remark: "加固材料" },
+    { name: "裂缝修补胶", value: "裂缝修补胶", remark: "加固材料" },
+    { name: "聚合物水泥注浆料", value: "聚合物水泥注浆料", remark: "加固材料" },
+    { name: "混凝土处理剂", value: "混凝土处理剂", remark: "加固材料" },
+    { name: "钢纤维", value: "钢纤维", remark: "加固材料" },
+    { name: "硅酮建筑密封胶", value: "硅酮建筑密封胶", remark: "加固材料" },
+    { name: "瓷砖粘合剂", value: "瓷砖粘合剂", remark: "加固材料" },
+    { name: "底胶", value: "底胶", remark: "加固材料" },
+    { name: "勾缝剂", value: "勾缝剂", remark: "加固材料" },
+    { name: "粘钢胶", value: "粘钢胶", remark: "加固材料" },
+
+    { name: "中空玻璃露点", value: "中空玻璃露点", remark: "幕墙" },
+    { name: "幕墙建筑密封胶", value: "幕墙建筑密封胶", remark: "幕墙" },
+    { name: "幕墙板材挂件组合单元", value: "幕墙板材挂件组合单元", remark: "幕墙" },
+    { name: "幕墙物理性能实验室检测", value: "幕墙物理性能实验室检测", remark: "幕墙" },
+    { name: "钢化玻璃幕墙物理性能实验室检测", value: "钢化玻璃幕墙物理性能实验室检测", remark: "幕墙" },
+    { name: "幕墙建筑密封胶", value: "幕墙建筑密封胶", remark: "幕墙" },
+    { name: "幕墙板材挂件组合单元", value: "幕墙板材挂件组合单元", remark: "幕墙" },
+    { name: "建筑石材", value: "建筑石材", remark: "幕墙" },
+    { name: "表面覆层", value: "表面覆层", remark: "幕墙" },
+
+    { name: "脚手架扣件", value: "脚手架扣件", remark: "板材料" },
+    { name: "铝合金型材", value: "铝合金型材", remark: "板材料" },
+    { name: "焊丝焊条", value: "焊丝焊条", remark: "板材料" },
+    { name: "金属波纹管", value: "金属波纹管", remark: "板材料" },
+    { name: "圆柱头焊钉", value: "圆柱头焊钉", remark: "板材料" },
+    { name: "导线钢绞线钢丝绳", value: "导线钢绞线钢丝绳", remark: "板材料" },
+    { name: "Z向性能", value: "Z向性能", remark: "板材料" }
+];
+
+var PersonTypeArrays = [
+    { name: "施工项目经理", value: "施工项目经理", unit: "'施工总包单位'" },
+    { name: "总监理工程师", value: "总监理工程师", unit: "'监理单位'" },
+    { name: "试验员", value: "试验员", unit: "'施工总包单位','施工分包单位'" },
+    { name: "见证员", value: "见证员", unit: "'监理单位'" },
+    { name: "专业监理工程师", value: "专业监理工程师", unit: "'监理单位'" },
+    { name: "质量员", value: "质量员", unit: "'施工总包单位'" },
+    { name: "技术负责人", value: "技术负责人", unit: "'施工总包单位'" },
+    { name: "建设单位现场负责人", value: "建设单位现场负责人", unit: "'建设单位'" }
+];
+
+//保存页面查询条件|适用于外网
+function InitPara() {
+    var result = '';
+    var r = unescape(window.location.hash);
+    if (r != "") {
+        result = r.substr(1);
+    }
+
+    if (result) {
+        var data = {};
+        var results = result.split('-');
+        $.each(results, function (ii, dd) {
+            var arrs = dd.split('|');
+            if (arrs.length == 2) {
+                data[arrs[0]] = unescape(arrs[1]);
+            }
+        });
+
+        $('#ff').form('setData', data);
+    }
+}
+
+
+function GetPageNumber() {
+    var pages = 1;
+    var result = '';
+    var r = unescape(window.location.hash);
+    if (r != "") {
+        result = r.substr(1);
+    }
+
+    if (result) {
+        var data = {};
+        var results = result.split('-');
+        $.each(results, function (ii, dd) {
+            var arrs = dd.split('|');
+            if (arrs.length == 2) {
+                data[arrs[0]] = unescape(arrs[1]);
+            }
+        });
+
+        if (data && data.pg) {
+            pages = data.pg;
+        }
+    }
+
+    return pages;
+}
+
+function loadBuild(ProjectGuid, objs) {
+    //操作列
+    p.get('/zljc-web-w/Service/MaterialMgeWebSvr.assx/SearchProjectEnterpriseList', { ProjectGuid: ProjectGuid }, function (data) {
+        if (data) {
+            $("#Build" + ProjectGuid).html('');
+            $("#Construct" + ProjectGuid).html('');
+            $("#Supervise" + ProjectGuid).html('');
+
+            var build = [];
+            var construct = [];
+            var supervise = [];
+
+            $.each(data._Items, function (ii, dd) {
+                if (dd.EnterpriseType == "建设单位") {
+                    build.push(dd.EnterpriseName);
+                }
+                else if (dd.EnterpriseType == "施工总包单位") {
+                    construct.push(dd.EnterpriseName);
+                } else if (dd.EnterpriseType == "监理单位") {
+                    supervise.push(dd.EnterpriseName);
+                }
+            });
+
+            if (build) {
+                $("#Build" + ProjectGuid).html(build.join('<br>'));
+            }
+
+            if (construct) {
+                $("#Construct" + ProjectGuid).html(construct.join('<br>'));
+            }
+
+            if (supervise) {
+                $("#Supervise" + ProjectGuid).html(supervise.join('<br>'));
+            }
+
+            if (objs) {
+                $("#" + objs).datagrid("resize");
+            }
+        }
+    });
+
+}
+
+//绑定样品部位
+var SamplePositionFormat = function (value, row, index) {
+
+    if (row.Guid) {
+        p.get('/zljc-web-w/Service/MaterialMgeWebSvr.assx/GetSampleProjectPosition', { ProjectGuid: escape(row.ProjectTenderGuid), InspectionNumbers: escape(row.Number) }, function (data) {
+            if (data) {
+
+                var views = [];
+                if (data._Items) {
+                    $.each(data._Items, function (i, o) {
+                        views.push(o.remark);
+                    });
+                }
+
+                $("#SamplePosition" + row.Guid).html(views.join('<br>'));
+
+                $(this).datagrid("resize");
+            }
+        });
+    }
+
+    var stateDiv = "<div id='SamplePosition" + row.Guid + "'>加载中</div>";
+    return stateDiv;
+};
+
+//绑定样品部位
+var SamplePositionFormatEx = function (Guid, ProjectTenderGuid, Number, obj) {
+
+    if (Guid) {
+        p.get('/zljc-web-w/Service/MaterialMgeWebSvr.assx/GetSampleProjectPosition', { ProjectGuid: escape(ProjectTenderGuid), InspectionNumbers: escape(Number) }, function (data) {
+            if (data) {
+
+                var views = [];
+                if (data._Items) {
+                    $.each(data._Items, function (i, o) {
+                        views.push(o.remark);
+                    });
+                }
+
+                $("#SamplePosition" + Guid).html(views.join('<br>'));
+
+                if (obj) {
+                    $("#" + obj).datagrid("resize");
+                }
+            }
+        });
+    }
+
+    var stateDiv = "<div id='SamplePosition" + Guid + "'>加载中</div>";
+    return stateDiv;
+};
+
+//绑定报告结论
+var ReportResultFormat = function (value, row, index) {
+    if (row.Guid) {
+        p.get('/zljc-web-w/Service/MaterialMgeWebSvr.assx/GetTestReportResult', { ProjectGuid: escape(row.ProjectTenderGuid), InspectionNumbers: escape(row.Number) }, function (data) {
+            if (data) {
+
+                var views = [];
+                if (data._Items) {
+                    $.each(data._Items, function (i, o) {
+                        if (o.text == 0 || o.text == "0") {
+                            views.push('<span style="line-height:20px;">/</span>');
+                        }
+                        else if (o.text == 1 || o.text == "1") {
+                            views.push('<span style="color:#26b984; line-height:20px;">合格</span>');
+                        }
+                        else if (o.text == 2 || o.text == "2") {
+                            views.push('<span style="color:#e40b0b;line-height:20px;">不合格</span>');
+                        }
+                    });
+                }
+
+                $("#ReportResult" + row.Guid).html(views.join('<br>'));
+            }
+        });
+    }
+
+    var stateDiv = "<div id='ReportResult" + row.Guid + "'>加载中</div>";
+
+    return stateDiv;
+
+};
+
+//绑定报告结论
+var ReportResultFormatEx = function (Guid, ProjectTenderGuid, Number, obj) {
+    if (Guid) {
+        p.get('/zljc-web-w/Service/MaterialMgeWebSvr.assx/GetTestReportResult', { ProjectGuid: escape(ProjectTenderGuid), InspectionNumbers: escape(Number) }, function (data) {
+            if (data) {
+
+                var views = [];
+                if (data._Items) {
+                    $.each(data._Items, function (i, o) {
+                        if (o.text == 0 || o.text == "0") {
+                            views.push('<span style="line-height:20px;">/</span>');
+                        }
+                        else if (o.text == 1 || o.text == "1") {
+                            views.push('<span style="color:#26b984; line-height:20px;">合格</span>');
+                        }
+                        else if (o.text == 2 || o.text == "2") {
+                            views.push('<span style="color:#e40b0b;line-height:20px;">不合格</span>');
+                        }
+                    });
+                }
+
+                $("#ReportResult" + Guid).html(views.join('<br>'));
+
+                if (obj) {
+                    $("#" + obj).datagrid("resize");
+                }
+            }
+        });
+    }
+
+    var stateDiv = "<div id='ReportResult" + Guid + "'>加载中</div>";
+
+    return stateDiv;
+
+};
+
+function resetValue(obj) {
+    if (typeof (obj) != "undefined" && obj != null && obj != "null") {
+        return obj;
+    }
+    return "";
+}
+
+var CQDays = 30;//用于计算设备超期的标准
+
+Date.prototype.diff = function (date) {
+    return (this.getTime() - date.getTime()) / (24 * 60 * 60 * 1000);
+}
+
+function RecheckValues(vals) {
+    if (vals) {
+        if (vals == "初检") {
+            $("div[class='no-pass-report']").hide();
+        } else if (vals == "复检") {
+            $("div[class='no-pass-report']").show();
+        }
+    }
+}
+
+//重要通知
+function ShowInformation() {
+    var dlg = p.dialog({
+        src: '/zljc-web-w/Informations.html',
+        title: "重要通知",
+        width: 1000,
+        height: 550
+    });
+}
+//百度地图AK
+var BaidumapKay = "utlLqwAKjGenHR9GtQuxR5tDR19pEGIB";
+
+//绑定报告有PDF
+var ReportCompleteFormat = function (value, row, index) {
+    if (row.Guid) {
+        p.get('/zljc-web-w/Service/MaterialMgeWebSvr.assx/GetCompleteReport', { InspectionNumber: escape(row.Number) }, function (data) {
+            var views = [];
+            if (data) {
+                if (data == "完整") {
+                    views.push('<span style="color:#26b984; line-height:20px;">有</span>');
+                    var op = " <a class='link-btn-view'  href=\"javascript:;\"  onclick='DownReportsPdf(\"" + row.Number + "\")' >检测报告下载</a>";
+                    $("#DownReport" + row.Guid).html(op);
+                }
+                else if (data == "不完整") {
+                    views.push('<span style="color:#e40b0b;line-height:20px;">无</span>');
+                }
+            }
+            $("#ReportComplete" + row.Guid).html(views.join('<br>'));
+
+            $("#tb_InspectionList").datagrid("resize");
+        });
+    }
+    var stateDiv = "<div id='ReportComplete" + row.Guid + "'>加载中</div>";
+    return stateDiv;
+};
+
+var TestQualifyCategoryDDL = [
+    { Name: "见证取样", Value: "见证取样" },
+    { Name: "地基基础", Value: "地基基础" },
+    { Name: "主体结构", Value: "主体结构" },
+    { Name: "建筑幕墙", Value: "建筑幕墙" },
+    { Name: "室内环境", Value: "室内环境" },
+    { Name: "钢结构", Value: "钢结构" },
+    { Name: "建筑节能与智能", Value: "建筑节能与智能" },
+    { Name: "其他", Value: "其他" }
+]
+
+var pointsss = [
+{ Guid: 'ec6a134c-d90f-4292-a479-872d2aabda03', Value: '[[{"lat":103.962214,"lon":30.47735}]]' },
+];
+
+/*上传结果*/
+var LogState = [
+    { Name: "全部", Value: "" },
+    { Name: "成功", Value: "成功" },
+    { Name: "失败", Value: "失败" }
+];
+
+/*是否上传信息*/
+var UploadState = [
+    { Name: "全部", Value: "" },
+    { Name: "是", Value: "是" },
+    { Name: "否", Value: "否" }
+];
+
+/*资质能力*/
+var QualificationAbilityDDL = [
+    { Name: "见证取样", Value: "见证取样" },
+    { Name: "地基基础", Value: "地基基础" },
+    { Name: "主体结构", Value: "主体结构" },
+    { Name: "建筑幕墙", Value: "建筑幕墙" },
+    { Name: "钢结构", Value: "钢结构" },
+    { Name: "建筑节能", Value: "建筑节能" },
+    { Name: "室内环境", Value: "室内环境" },
+    { Name: "防雷检测", Value: "防雷检测" },
+    { Name: "消防检测", Value: "消防检测" },
+    { Name: "人防检测", Value: "人防检测" }
+];
+
+/*检测类别*/
+var DetectionTypeDDL = [
+    { Name: "材料检测", Value: "材料检测" },
+    { Name: "现场检测", Value: "现场检测" },
+    { Name: "地基基础检测", Value: "地基基础检测" }
+];
+
+/*地基基础检测*/
+var FoundationDetectionDDL = [
+    { Name: "深层平板静载荷试验", Value: "深层平板静载荷试验" },
+    { Name: "浅层平板静载荷试验", Value: "浅层平板静载荷试验" },
+    { Name: "岩基荷载静载荷试验", Value: "岩基荷载静载荷试验" },
+    { Name: "复合地基静载荷试验", Value: "复合地基静载荷试验" },
+    { Name: "单桩竖向抗压静载荷试验", Value: "单桩竖向抗压静载荷试验" },
+    { Name: "单桩竖向抗拔静载荷试验", Value: "单桩竖向抗拔静载荷试验" },
+    { Name: "单桩水平静载荷试验", Value: "单桩水平静载荷试验" },
+    { Name: "自平衡静载荷试验", Value: "自平衡静载荷试验" },
+    { Name: "高应变", Value: "高应变" },
+    { Name: "低应变", Value: "低应变" },
+    { Name: "声波透射", Value: "声波透射" },
+    { Name: "钻芯", Value: "钻芯" },
+    { Name: "锚杆抗拔试验", Value: "锚杆抗拔试验" }
+];
+var FoundationDetectionCodeDDL = [
+    { Name: "深层平板静载荷试验", Value: "6" },
+    { Name: "浅层平板静载荷试验", Value: "5" },
+    { Name: "岩基荷载静载荷试验", Value: "7" },
+    { Name: "复合地基静载荷试验", Value: "4" },
+    { Name: "单桩竖向抗压静载荷试验", Value: "1" },
+    { Name: "单桩竖向抗拔静载荷试验", Value: "2" },
+    { Name: "单桩水平静载荷试验", Value: "8" },
+    { Name: "自平衡静载荷试验", Value: "3" },
+    { Name: "高应变", Value: "9" },
+    { Name: "低应变", Value: "10" },
+    { Name: "声波透射", Value: "11" },
+    { Name: "钻芯", Value: "13" },
+    { Name: "锚杆抗拔试验", Value: "12" }
+];
+
+/** 检测内容-检测方法 关联下拉 */
+var CheckContentFunction = [
+    {
+        Name: "承载力", Value: "承载力", Child: [
+            { Name: "深层平板静载荷试验", Value: "6" },
+            { Name: "浅层平板静载荷试验", Value: "5" },
+            { Name: "岩基荷载静载荷试验", Value: "7" },
+            { Name: "复合地基静载荷试验", Value: "4" },
+            { Name: "单桩竖向抗压静载荷试验", Value: "1" },
+            { Name: "单桩竖向抗拔静载荷试验", Value: "2" },
+            { Name: "单桩水平静载荷试验", Value: "8" },
+            { Name: "自平衡静载荷试验", Value: "3" },
+            { Name: "高应变", Value: "9" }
+        ]
+    },
+    {
+        Name: "桩身完整性", Value: "桩身完整性", Child: [
+            { Name: "低应变", Value: "10" },
+            { Name: "声波透射", Value: "11" },
+            { Name: "钻芯", Value: "13" }
+        ]
+    },
+    {
+        Name: "抗拔力", Value: "抗拔力", Child: [
+            { Name: "锚杆抗拔试验", Value: "12" }
+        ]
+    }
+];
+
+//检测方法code查名称
+function formatMethod(code) {
+    var Name = "";
+    if (code) {
+        $.each(FoundationDetectionCodeDDL, function (i, item) {
+            if (item.Value == code) {
+                Name = item.Name;
+                return;
+            }
+        });
+    }
+    
+    return Name;
+}
+
+// 根据检测方法code分类型
+function formateMethodEchartsTypes(code) {
+    var t = "";
+    // 检测方法类型(9高应变high,10低应变low,1-8静载static,11声波透射wave) TODO 12 13 填报内容待新页面
+    if (code) {
+        switch (code>=1 && code<=13) {
+            case code >= 1 && code <= 8:
+                return "static";
+                break;
+            case code == 9:
+                return "high";
+                break;
+            case code == 10:
+                return "low";
+                break;
+            case 11 == code:
+                return "wave";
+                break;
+            case 12 == code:
+                return "static";
+                break;
+            case 13 == code:
+                return "static";
+                break;
+        }
+    }
+    return t;
+}
+
+//任务流程状态
+var DetectionDDL = [
+    { name: "全部", value: "", selected: true },
+    { name: "绑定设备及人员", value: "20" },
+    { name: "待检测", value: "30" },
+    { name: "检测中", value: "40" },
+    { name: "检测完成", value: "50" },
+    { name: "异常结束", value: "60" }
+];
+var DetectionStepBind = {
+    "10": "发起检测任务",
+    "20": "绑定设备及人员",
+    "30": "待检测",
+    "40": "检测中",
+    "50": "检测完成",
+    "60": "异常结束"
+};
+
+//管理列表的状态
+var DetectionInfoDDL = [
+    { name: "全部", value: "", selected: true },
+    { name: "发起现场检测", value: "发起现场检测" },
+    { name: "审批检测方案", value: "审批检测方案" },
+    { name: "审核不通过", value: "审核不通过" },
+    { name: "退回整改", value: "退回整改" },
+    { name: "检测中", value: "检测中" },
+    { name: "异常结束", value: "异常结束" },
+    { name: "检测完成", value: "检测完成" }
+];
+//特殊流程的状态
+var SpecialState = [
+    { name: "全部", value: "", selected: true },
+    { name: "初审", value: "初审" },
+    { name: "初审不通过", value: "初审不通过" },
+    { name: "审核", value: "审核" },
+    { name: "审核不通过", value: "审核不通过" },
+    { name: "审核通过", value: "审核通过" },
+];
+
+
+// 检测类型
+var CheckTypes = [
+    { name: "初检", value: "0", selected: true },
+    { name: "复检", value: "1" }
+];
+
+
+// 设备类型
+var EquipmentTypes = [
+    { name: "检测仪", value: "检测仪"},
+    { name: "其他配套设备", value: "其他配套设备" },
+    { name: "传输主机", value: "传输主机" },
+    { name: "控制盒", value: "控制盒" },
+];
+
+// 设备类型
+var EquipmentIsCanUploadData = [
+    { name: "是", value: "1" },
+    { name: "否", value: "0" }
+];
+
+//材料和标识系统检测项对应(历史的)
+var MaterialConfig = [
+    {
+        name: "钢筋原材", value: "钢筋原材", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "生产厂家", jcname: "CompanyName" },
+            { clname1: "出厂日期", jcname: "OutFactoryTime" },
+            { clname1: "公称直径", jcname: "Specification" }
+        ]
+    },
+    {
+        name: "混凝土抗折", value: "混凝土抗折", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "生产厂家", jcname: "CompanyName" },
+            { clname1: "设计等级", jcname: "PowerLevel" }
+        ]
+    },
+    {
+        name: "混凝土抗压", value: "混凝土抗压", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "设计等级", jcname: "PowerLevel" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "混凝土抗渗", value: "混凝土抗渗", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "强度等级", jcname: "PowerLevel" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "砂浆", value: "砂浆", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "设计等级", jcname: "PowerLevel" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "砖", value: "砖", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "强度等级", jcname: "PowerLevel" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "砌体", value: "砌体", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "强度等级", jcname: "PowerLevel" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "防水卷材", value: "防水卷材", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "生产日期", jcname: "ManufactureDate" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "防水涂料", value: "防水涂料", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "生产日期", jcname: "ManufactureDate" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "预应力钢绞线", value: "预应力钢绞线", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "电线电缆", value: "电线电缆", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "灯具", value: "灯具", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "风机盘管", value: "风机盘管", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "PPR给水管", value: "PPR给水管", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "U-PVC管", value: "U-PVC管", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "PE管", value: "PE管", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "钢材", value: "钢材", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "焊接材料", value: "焊接材料", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "紧固连接件", value: "紧固连接件", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "岩棉板", value: "岩棉板", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "硅酸盐板", value: "硅酸盐板", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "挤塑聚苯乙烯泡沫板XPS板", value: "挤塑聚苯乙烯泡沫板XPS板", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "模塑聚苯乙烯泡沫板EPS板", value: "模塑聚苯乙烯泡沫板EPS板", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "胶粉聚苯颗粒", value: "胶粉聚苯颗粒", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "装饰板材", value: "装饰板材", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "饰面板砖", value: "饰面板砖", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "门窗", value: "门窗", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "型材", value: "型材", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "建筑安全玻璃", value: "建筑安全玻璃", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "中空玻璃", value: "中空玻璃", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "硅酮结构密封胶", value: "硅酮结构密封胶", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "建筑涂料", value: "建筑涂料", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "三元乙丙密封垫", value: "三元乙丙密封垫", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "螺孔密封圈", value: "螺孔密封圈", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "丁腈软木衬垫", value: "丁腈软木衬垫", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "止水带", value: "止水带", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "初期支护系统锚杆原材", value: "初期支护系统锚杆原材", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "检查井盖承载力", value: "检查井盖承载力", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "橡塑保温板", value: "橡塑保温板", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "玻璃棉板", value: "玻璃棉板", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    },
+    {
+        name: "腻子", value: "腻子", Items: [
+            { clname1: "样品名称", jcname: "Name" },
+            { clname1: "批号", jcname: "EntryAcceptanceBatchNumber" },
+            { clname1: "生产厂家", jcname: "CompanyName" }
+        ]
+    }
+];
+
+///获取内容
+var GetMaterialConfig = function (type) {
+    var data = null;
+    $.each(MaterialConfig, function (ii, dd) {
+        if (dd.name == type) {
+            data = dd.Items;
+        }
+    });
+
+    return data;
+}
+
+///获取弹出框内容
+var getNoticeMsg = function () {
+    var arr = [];
+    $.each(MaterialConfig, function (ii, dd) {
+        arr.push(dd.name);
+    });
+
+    var msg = $('<div style="text-indent:20px;">在填写样品信息时，<span style="color:#ff0000;">' + arr.join('、') + '</span>应首先选择库里的生产厂家，若库里无对应生产厂家信息，应选择“增加”，手动填写生产厂家名称。</div>\
+    <div style="text-indent:20px;">同时施工和监理单位应督促生产厂家尽快在建材监管系统中完成企业信息录入登记。生产厂家应按照《成都市建设工程材料使用监督管理规定(试行) 》文件要求完成诚信登记，请登录网址：https://pt.cdzjryb.com/loginjc.aspx；咨询电话：65787813。 </div>');
+
+    return msg;
+}
+
+///获取内容
+var GetMaterialNewConfig = function (type) {
+    var data = null;
+    $.each(MaterialConfigNew, function (ii, dd) {
+        if (dd.value == type) {
+            data = dd.Items;
+            data.push({ clname1: "进场量", jcname: "SupplyCount" });
+            data.push({ clname1: "进场量单位", jcname: "Unit" });
+        }
+    });
+
+    return data;
+}
+
+///获取弹出框内容
+var getNoticeNewMsg = function () {
+    var arr = [];
+    $.each(MaterialConfigNew, function (ii, dd) {
+        arr.push(dd.name);
+    });
+
+    var msg = $('<div style="text-indent:20px;">在填写样品信息时，<span style="color:#ff0000;">' + arr.join('、') + '</span>应首先选择库里的生产厂家，若库里无对应生产厂家信息，应选择“增加”，手动填写生产厂家名称。</div>\
+    <div style="text-indent:20px;">同时施工和监理单位应督促生产厂家尽快在建材监管系统中完成企业信息录入登记。生产厂家应按照《成都市建设工程材料使用监督管理规定(试行) 》文件要求完成诚信登记，请登录网址：https://pt.cdzjryb.com/loginjc.aspx；咨询电话：65787813。 </div>');
+
+    return msg;
+}
+
+function ClearAllData(opt) {
+    opt = $.extend(true, {
+        jsondata: null,
+        formID: null,
+    }, opt);
+
+    //===============================
+    var itemData = GetMaterialConfig(opt.formID);
+    if (itemData && itemData.length > 0) {
+        $.each(itemData, function (ii, dd) {
+            //===============================
+            $.each(opt.jsondata._Items, function (index, value) {
+
+                if (value.XmlNodeName == dd.clname1) {
+                    //===================================================================================
+
+                    if (value.Type != null && value.Type != "" || value.Title != "") {
+                        if (value.Type.indexOf("EditText") >= 0 || value.Type == "NumberDecimal" || value.Type =='UseExtType') {
+
+                            if (value.Title == "生产厂家") {
+                                $("#txtOtherPositionCompany").textbox("setValue", "");
+                                $("#txtOtherPositionCompany").textbox({ disabled: false });
+                            }
+                            else {
+                                $("#" + value.XmlNodeName).textbox("setValue", "");
+                                $("#" + value.XmlNodeName).textbox({ disabled: false });
+                            }
+
+                        }
+                        else if (value.Type.indexOf("Spinner") >= 0) {
+                            $("#" + value.XmlNodeName).combobox("setValue", "");
+                            $("#" + value.XmlNodeName).combobox({ disabled: false });
+                        }
+                        else if (value.Type == "Number") {
+                            $("#" + value.XmlNodeName).numberbox('setValue', "");
+                            $("#" + value.XmlNodeName).numberbox({ disabled: false });
+                        }
+                        else if (value.Type == "DateTime") {
+                            $("#" + value.XmlNodeName).datebox('setValue', "");
+                            $("#" + value.XmlNodeName).datebox({ disabled: false });
+                        } else if (value.Type == "DateTimeBox") {
+                            $("#" + value.XmlNodeName).datetimebox('setValue', "");
+                            $("#" + value.XmlNodeName).datetimebox({ disabled: false });
+                        } else if (value.Type == "Switch") {
+                            $("#" + value.XmlNodeName).combobox("setValue", "");
+                            $("#" + value.XmlNodeName).combobox({ disabled: false });
+                        }
+                        else {
+                            $("#" + value.XmlNodeName).validatebox('setValue', "");
+                            $("#" + value.XmlNodeName).validatebox({ disabled: false });
+                        }
+                    }
+
+                    //===================================================================================
+                }
+
+            });
+                //===============================
+        });
+    }
+    //===============================
+}
+
+function ResetJCData(opt) {
+    opt = $.extend(true, {
+        jsondata: null,
+        mateData: null,
+        formID: null,
+        setValue: true,
+        setDisable: true,
+        clearData: false
+    }, opt);
+
+    if (opt.clearData) {
+        ClearAllData(opt);
+    }
+    
+    var itemData = GetMaterialConfig(opt.formID);
+    if (itemData && itemData.length > 0) {
+        $.each(itemData, function (ii, dd) {
+            //----------------------------------------
+            var nodeValue = null;
+            if (opt.setValue) {
+                nodeValue = opt.mateData[dd.jcname];
+            }
+            
+            if (nodeValue || opt.setDisable) {
+                //===============================
+                $.each(opt.jsondata._Items, function (index, value) {
+
+                    if (value.XmlNodeName == dd.clname1) {
+                        //===================================================================================
+
+                        if (value.Type != null && value.Type != "" || value.Title != "") {
+                            if (value.Type.indexOf("EditText") >= 0 || value.Type == "NumberDecimal" || value.Type == "UseExtType") {
+
+                                if (value.Title == "样品名称") {
+                                    if (opt.setValue) {
+                                        $("#" + value.XmlNodeName).textbox("setValue", p.ResetValue(nodeValue));
+                                    }
+                                }
+                                else {
+                                    if (value.Title == "生产厂家") {
+                                        $("#txtOtherPositionCompany").textbox({ disabled: true });
+                                        if (opt.setValue) {
+                                            $("#txtOtherPositionCompany").textbox("setValue", p.ResetValue(nodeValue));
+                                        }
+                                    }
+                                    else {
+                                        $("#" + value.XmlNodeName).textbox({ disabled: true });
+                                        if (opt.setValue) {
+                                            $("#" + value.XmlNodeName).textbox("setValue", p.ResetValue(nodeValue));
+                                        }
+                                        
+                                    }
+                                }
+
+                            }
+                            else if (value.Type.indexOf("Spinner") >= 0) {
+                                
+                                $("#" + value.XmlNodeName).combobox({ disabled: true });
+                                if (opt.setValue) {
+                                    $("#" + value.XmlNodeName).combobox("setValue", p.ResetValue(nodeValue));
+                                    $("#" + value.XmlNodeName).combobox('select', p.ResetValue(nodeValue));
+                                }                                
+                            }
+                            else if (value.Type == "Number") {
+                                $("#" + value.XmlNodeName).numberbox({ disabled: true });
+                                if (opt.setValue) {
+                                    $("#" + value.XmlNodeName).numberbox('setValue', p.ResetValue(nodeValue));
+                                }
+                            }
+                            else if (value.Type == "DateTime") {
+                                $("#" + value.XmlNodeName).datebox({ disabled: true });
+                                if (opt.setValue) {
+                                    $("#" + value.XmlNodeName).datebox('setValue', p.formatdate(nodeValue));
+                                }
+                            } else if (value.Type == "DateTimeBox") {
+                                $("#" + value.XmlNodeName).datetimebox({ disabled: true });
+                                if (opt.setValue) {
+                                    $("#" + value.XmlNodeName).datetimebox('setValue', p.formatdate(nodeValue));
+                                }
+                            } else if (value.Type == "Switch") {
+                                
+                                $("#" + value.XmlNodeName).combobox({ disabled: true });
+                                if (opt.setValue) {
+                                    $("#" + value.XmlNodeName).combobox("setValue", p.ResetValue(nodeValue));
+                                    $("#" + value.XmlNodeName).combobox('select', p.ResetValue(nodeValue));
+                                }                                
+                            }
+                            else {
+                                $("#" + value.XmlNodeName).validatebox({ disabled: true });
+                                if (opt.setValue) {
+                                    $("#" + value.XmlNodeName).validatebox('setValue', p.ResetValue(nodeValue));
+                                }
+                            }
+                        }
+
+                        //===================================================================================
+                    }
+
+                });
+                //===============================
+            }
+            //----------------------------------------
+        });
+    }
+}
+
+
+function ClearAllDataNew(opt) {
+    opt = $.extend(true, {
+        jsondata: null,
+        formID: null,
+    }, opt);
+
+    //===============================
+    var itemData = GetMaterialNewConfig(opt.formID);
+    if (itemData && itemData.length > 0) {
+        $.each(itemData, function (ii, dd) {
+            //===============================
+            $.each(opt.jsondata._Items, function (index, value) {
+
+                if (value.XmlNodeName == dd.clname1) {
+                    //===================================================================================
+
+                    if (value.Type != null && value.Type != "" || value.Title != "") {
+                        if (value.Type.indexOf("EditText") >= 0 || value.Type == "NumberDecimal" || value.Type == 'UseExtType') {
+
+                            if (value.Title == "生产厂家") {
+                                $("#txtOtherPositionCompany").textbox("setValue", "");
+                                $("#txtOtherPositionCompany").textbox({ disabled: false });
+                            }
+                            else {
+                                $("#" + value.XmlNodeName).textbox("setValue", "");
+                                $("#" + value.XmlNodeName).textbox({ disabled: false });
+                            }
+
+                        }
+                        else if (value.Type.indexOf("Spinner") >= 0) {
+                            $("#" + value.XmlNodeName).combobox("setValue", "");
+                            $("#" + value.XmlNodeName).combobox({ disabled: false });
+                        }
+                        else if (value.Type == "Number") {
+                            $("#" + value.XmlNodeName).numberbox('setValue', "");
+                            $("#" + value.XmlNodeName).numberbox({ disabled: false });
+                        }
+                        else if (value.Type == "DateTime") {
+                            $("#" + value.XmlNodeName).datebox('setValue', "");
+                            $("#" + value.XmlNodeName).datebox({ disabled: false });
+                        } else if (value.Type == "DateTimeBox") {
+                            $("#" + value.XmlNodeName).datetimebox('setValue', "");
+                            $("#" + value.XmlNodeName).datetimebox({ disabled: false });
+                        } else if (value.Type == "Switch") {
+                            $("#" + value.XmlNodeName).combobox("setValue", "");
+                            $("#" + value.XmlNodeName).combobox({ disabled: false });
+                        }
+                        else {
+                            $("#" + value.XmlNodeName).validatebox('setValue', "");
+                            $("#" + value.XmlNodeName).validatebox({ disabled: false });
+                        }
+                    }
+
+                    //===================================================================================
+                }
+
+            });
+            //===============================
+        });
+    }
+    //===============================
+}
+
+function ResetJCDataNew(opt) {
+    opt = $.extend(true, {
+        jsondata: null,
+        mateData: null,
+        formID: null,
+        setValue: true,
+        setDisable: true,
+        clearData: false
+    }, opt);
+
+    if (opt.clearData) {
+        ClearAllDataNew(opt);
+    }
+
+    var itemData = GetMaterialNewConfig(opt.formID);
+    if (itemData && itemData.length > 0) {
+        $.each(itemData, function (ii, dd) {
+            //----------------------------------------
+            var nodeValue = null;
+            if (opt.setValue) {
+                nodeValue = opt.mateData[dd.jcname];
+            }
+
+            if (nodeValue || opt.setDisable) {
+                //===============================
+                $.each(opt.jsondata._Items, function (index, value) {
+
+                    if (value.XmlNodeName == dd.clname1) {
+
+                        var tmpdisabled = true;
+                        if (dd.canEdit) {
+                            tmpdisabled = false;
+                        }
+                        //===================================================================================
+
+                        if (value.Type != null && value.Type != "" || value.Title != "") {
+                            if (value.Type.indexOf("EditText") >= 0 || value.Type == "NumberDecimal" || value.Type == "UseExtType") {
+
+                                if (value.Title == "样品名称") {
+                                    if (opt.setValue) {
+                                        $("#" + value.XmlNodeName).textbox("setValue", p.ResetValue(nodeValue));
+                                    }
+                                }
+                                else {
+                                    if (value.Title == "生产厂家") {
+                                        $("#txtOtherPositionCompany").textbox({ disabled: true });
+                                        if (opt.setValue) {
+                                            $("#txtOtherPositionCompany").textbox("setValue", p.ResetValue(nodeValue));
+                                        }
+                                    }
+                                    else {
+                                        $("#" + value.XmlNodeName).textbox({ disabled: true });
+                                        if (opt.setValue) {
+                                            $("#" + value.XmlNodeName).textbox("setValue", p.ResetValue(nodeValue));
+                                        }
+
+                                    }
+                                }
+
+                            }
+                            else if (value.Type.indexOf("Spinner") >= 0) {
+
+                                $("#" + value.XmlNodeName).combobox({ disabled: tmpdisabled });
+                                if (opt.setValue) {
+                                    $("#" + value.XmlNodeName).combobox("setValue", p.ResetValue(nodeValue));
+                                    $("#" + value.XmlNodeName).combobox('select', p.ResetValue(nodeValue));
+                                }
+                            }
+                            else if (value.Type == "Number") {
+                                $("#" + value.XmlNodeName).numberbox({ disabled: true });
+                                if (opt.setValue) {
+                                    $("#" + value.XmlNodeName).numberbox('setValue', p.ResetValue(nodeValue));
+                                }
+                            }
+                            else if (value.Type == "DateTime") {
+                                $("#" + value.XmlNodeName).datebox({ disabled: true });
+                                if (opt.setValue) {
+                                    $("#" + value.XmlNodeName).datebox('setValue', p.formatdate(nodeValue));
+                                }
+                            } else if (value.Type == "DateTimeBox") {
+                                $("#" + value.XmlNodeName).datetimebox({ disabled: true });
+                                if (opt.setValue) {
+                                    $("#" + value.XmlNodeName).datetimebox('setValue', p.formatdate(nodeValue));
+                                }
+                            } else if (value.Type == "Switch") {
+
+                                $("#" + value.XmlNodeName).combobox({ disabled: tmpdisabled });
+                                if (opt.setValue) {
+                                    $("#" + value.XmlNodeName).combobox("setValue", p.ResetValue(nodeValue));
+                                    $("#" + value.XmlNodeName).combobox('select', p.ResetValue(nodeValue));
+                                }
+                            }
+                            else {
+                                $("#" + value.XmlNodeName).validatebox({ disabled: tmpdisabled });
+                                if (opt.setValue) {
+                                    $("#" + value.XmlNodeName).validatebox('setValue', p.ResetValue(nodeValue));
+                                }
+                            }
+                        }
+
+                        //===================================================================================
+                    }
+
+                });
+                //===============================
+            }
+            //----------------------------------------
+        });
+    }
+}
+
+var pubkeyHex = "04F59485B23304990ED45E42521BE504D0DE358B9E4031A172EF48700071AF985A8EA8B12BB479E24152814EE61840932BFFF5B3B1657C9CF50A61756B1D901E1C";
+
+/*可做试验配置*/
+var EquipmentAbilityConfigs = [
+    { name: "钢筋机械连接检测", value: "101" },
+    { name: "钢筋机械连接检测（复检）", value: "102" },
+    { name: "钢筋焊接检测-压力焊", value: "103" },
+    { name: "钢筋焊接检测-闪光对焊", value: "104" },
+    { name: "钢筋焊接检测-单面双面焊", value: "105" },
+    { name: "砂浆抗压检测", value: "106" },
+    { name: "混凝土抗压强度检测", value: "107" },
+    { name: "混凝土抗渗性能检测", value: "108" },
+    { name: "钢筋原材（热轧光圆钢筋）检测", value: "109" },
+    { name: "钢筋原材（热轧带肋钢筋）检测", value: "110" },
+    { name: "钢筋原材（冷轧光圆钢筋）检测", value: "111" },
+    { name: "烧结普通砖强度等级检验检测", value: "112" }
+];
+
+/*hn混凝土样品配置*/
+var HntCodeConfigs = {
+    datas: [
+        { name: "普通混凝土抗压试块", value: "100100050001" },
+        { name: "特种混凝土抗压试块", value: "100100060001" },
+        { name: "普通混凝土抗压试块", value: "100500160001" },
+        { name: "特种混凝土抗压试块", value: "100500170001" },
+        { name: "混凝土抗压", value: "0105" }
+    ],
+    exsts: function (code) {
+        var result = false;
+        $.each(HntCodeConfigs.datas, function (ii, dd) {
+            if (dd.value == code) {
+                result = true;
+                return result;
+            }
+        });
+        return result;
+    }
+};
+
+/*择混凝土进场信息涉及的取样送检分类*/
+var SelectHntCodeConfigs = {
+    datas: [
+        { name: "混凝土抗压", value: "0105" },
+        { name: "混凝土抗渗", value: "0106" },
+        { name: "混凝土抗折", value: "0104" },
+        { name: "普通混凝土抗压试块", value: "100100050001" },
+        { name: "普通混凝土抗压试块", value: "100500160001" },
+        { name: "普通混凝土抗渗试块", value: "100100050002" },
+        { name: "普通混凝土抗渗试块", value: "100500016002" },
+        { name: "普通混凝土抗渗试块", value: "100500160002" },
+        { name: "普通混凝土钻芯芯样", value: "100100050003" },
+        { name: "普通混凝土钻芯芯样", value: "100500160003" },
+        { name: "通混凝土其他性能检测试块", value: "100100050004" },
+        { name: "通混凝土其他性能检测试块", value: "100500160004" },
+        { name: "特种混凝土抗压试块", value: "100100060001" },
+        { name: "特种混凝土抗压试块", value: "100500170001" },
+        { name: "特种混凝土抗渗试块", value: "100100060002" },
+        { name: "特种混凝土抗渗试块", value: "100500017002" },
+        { name: "特种混凝土抗渗试块", value: "100500170002" },
+        { name: "特种混凝土钻芯芯样", value: "100100060003" },
+        { name: "特种混凝土钻芯芯样", value: "100500170003" },
+        { name: "特种混凝土其他性能检测试块", value: "100100060004" },
+        { name: "特种混凝土其他性能检测试块", value: "100500170004" }
+    ],
+    exsts: function (code) {
+        var result = false;
+        $.each(SelectHntCodeConfigs.datas, function (ii, dd) {
+            if (dd.value == code) {
+                result = true;
+                return result;
+            }
+        });
+        return result;
+    }
+};
+
+function BatchDownload(data1, ProjectName) {
+    var port = getport();
+    var token = p.cookie("ticket" + port); //此处应该设置token的值.
+    $.ajax({
+        url: env.filesvr + "/DownFilses.aspx",
+        method: 'post',
+        data: {
+            token: token,
+            type: '1',
+            id: data1,
+            name: escape(ProjectName)
+        },
+        xhrFields: {
+            responseType: 'blob' // 期望返回 Blob 对象  
+        },
+        success: function (data) {
+            // 创建一个链接元素  
+            const blob = new Blob([data]);
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+if(data1.indexOf(",")==-1){
+link.download = ProjectName + '.pdf'; // 指定下载的文件名
+}else{
+            link.download = ProjectName + '.zip'; // 指定下载的文件名
+}
+            link.click();
+            window.URL.revokeObjectURL(link.href); // 释放内存  
+        },
+        error: function (xhr) {
+            $.messager.alert("提示", "下载失败:" + xhr, "info");
+        }
+    });
+}

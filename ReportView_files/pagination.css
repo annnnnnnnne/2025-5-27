@@ -1,0 +1,70 @@
+.pager {
+            font-size: 80%;
+            float:right;
+            margin:4px;
+}
+.pager a {
+    text-decoration: none;
+	border: solid 1px #e0e0e0;
+    background: #f7f7f7;
+	color: #808080;
+    font-size: 12px;
+}
+
+.pager a, .pager span {
+    display: block;
+    float: left;
+    width:29px;
+    height:25px;
+	margin: 4px;
+    text-align:center;
+    line-height:25px;
+}
+
+    .pager a:hover {
+        background:#3d9ccc;
+        color:#fff;
+    }
+.pager .current {
+    background: #3d9ccc;
+    color: #fff;
+	border: solid 1px #3d9ccc;
+}
+
+.pager .current.prev, .pager .current.next{
+	color:#999;
+	border-color:#e0e0e0;
+	background:#f7f7f7;
+}
+    .pager .current.prev , .pager .prev,.pager a.prev:hover{
+        background:url(../Images/prev.png) no-repeat scroll center;
+        width:32px;
+        height:25px;
+    }
+    .pager .current.next ,.pager .next,.pager a.next:hover{
+        background:url(../Images/next.png) no-repeat scroll center;
+        width:32px;
+        height:25px;
+    }
+.pager .p_txt {
+    color:#999;
+    float:left;
+}
+.pager .p_txt,.p_txt span {
+    width:auto;
+    letter-spacing:2px;
+}
+.p_txt .txt_go {
+    margin-left:2px;
+    height:18px;
+    width:24px;
+    text-align:center;
+}
+.p_txt .btn_go {
+    width:50px;
+    height:25px;
+    background:#f7f7f7;
+    border:1px solid #e0e0e0;
+    color:#5f96ad;
+    line-height:16px;
+}

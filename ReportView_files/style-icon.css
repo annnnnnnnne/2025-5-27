@@ -1,0 +1,118 @@
+﻿/*按钮常用图标*/
+.l-btn-iconEx { height: 28px;text-decoration: none;display: inline-block;margin: 0; margin-left:10px; padding: 0;cursor: pointer;outline: none;text-align: center;vertical-align: middle;}
+.l-btn-search {background: url('../Images/Icons/l-btn-search.png') no-repeat; width:81px;}
+.l-btn-add {background: url('../Images/Icons/l-btn-add.png') no-repeat;width:81px;}
+.l-btn-fqjcrw {background: url('../Images/Icons/fqjcrw.png') no-repeat;width:125px;}
+.l-btn-fqzxjcrw {background: url('../Images/Icons/fqzxjcrw.png') no-repeat;width:155px;}
+.l-btn-lxmsb {background: url('../Images/Icons/lxmsb.png') no-repeat;width:112px;}
+.l-btn-export {background: url('../Images/Icons/daochu.png') no-repeat;width:82px;}
+.l-btn-import {background: url('../Images/Icons/daoru.png') no-repeat;width:82px;}
+.l-btn-tongji {background: url('../Images/Icons/tongji.png') no-repeat;width:82px;}
+.l-btn-xuanze {background: url('../Images/Icons/xuanze.png') no-repeat;width:82px;}
+.l-btn-zizhigengxin {background: url('../Images/Icons/zizhigengxin.png') no-repeat;width:102px;}
+
+
+.l-btn-addRow {background: url('../Images/Icons/addRow.png') no-repeat;width:91px;}
+.l-btn-compare {background: url('../Images/Icons/l_btn_compare.png') no-repeat; width:102px;}
+
+.l-btn-delete {background: url('../Images/Icons/l-btn-delete.png') no-repeat;width:81px;}
+.l-btn-edit {background: url('../Images/Icons/l-btn-edit.png') no-repeat;width:81px;}
+.l-btn-inputReport {background: url('../Images/Icons/l-btn-inputReport.png') no-repeat;width:101px;}
+.l-btn-lock {background: url('../Images/Icons/l-btn-lock.png') no-repeat;width:81px;}
+.l-btn-unlock {background: url('../Images/Icons/l-btn-unlock.png') no-repeat;width:81px;}
+.l-btn-right {background: url('../Images/Icons/l-btn-right.png') no-repeat;width:101px;}
+.l-btn-bindLock {background: url('../Images/Icons/l-btn-bindLock.png') no-repeat;width:121px;}
+.l-btn-changeLock {background: url('../Images/Icons/l-btn-changeLock.png') no-repeat;width:121px;}
+.l-btn-resetLockPwd {background: url('../Images/Icons/l-btn-resetLockPwd.png') no-repeat;width:140px;}
+.l-btn-pwd {background: url('../Images/Icons/l-btn-pwd.png') no-repeat;width:101px;}
+.l-btn-DirectAccept {background: url('../Images/Icons/DirectAccept.png') no-repeat;width:101px;}
+.l-btn-addex {display:inline-block;height:30px;line-height:30px;width:100px;border:1px dashed #ccc;color:#000;}
+.icon-file{ background: url('../Images/Icons/icon1_07.png') no-repeat;width:20px;height:20px; background-repeat:no-repeat; 
+            background-position:center center; display:inline-block; }
+.icon-delete { background: url('../Images/Icons/icon1_03.png') no-repeat;width:20px;height:20px; background-repeat:no-repeat; background-position:center center; }
+.icon-remove { background: url('../Images/Icons/icon1_13_close.png') no-repeat;width:20px;height:20px; background-repeat:no-repeat; background-position:center center; }
+
+.icon-overtime { background: url('../Images/Icons/icon1_31.png') no-repeat;width:15px;height:15px; background-repeat:no-repeat; background-position:center center; }
+.icon-willOvertime { background: url('../Images/Icons/icon1_32.png') no-repeat;width:15px;height:15px; background-repeat:no-repeat; background-position:center center; }
+
+.l-btn-project {background: url('../Images/Icons/l-btn-project.png') no-repeat;width:142px;}
+.l-btn-sender {background: url('../Images/Icons/l-btn-sender.png') no-repeat;width:142px;}
+.l-btn-child {background: url('../Images/Icons/l-btn-child.png') no-repeat;width:142px;}
+.l-btn-slide-down {background: url('../Images/Icons/slide_down.png') no-repeat;width:40px;height:40px;}
+.l-btn-slide-up {background: url('../Images/Icons/slide_up.png') no-repeat;width:40px;height:40px;}
+/*诚信登记*/
+.l-btn-honesty_search {background: url('../Images/Icons/honesty_search.png') no-repeat;width:81px;height:40px;}
+.l-btn-honesty_conmpanyinfo {background: url('../Images/Icons/honesty_companyinfo.png') no-repeat;width:142px;height:40px;}
+.l-btn-honesty_ChangeConmpanyinfo {background: url('../Images/Icons/qybgdj.png') no-repeat;width:142px;height:40px;}
+.l-btn-honesty_ratepaying {background: url('../Images/Icons/ratepaying.png') no-repeat;width:142px;height:40px;}
+.l-btn-honesty_prize {background: url('../Images/Icons/prize.png') no-repeat;width:142px;height:40px;}
+.l-btn-honesty_badlybehave {background: url('../Images/Icons/honesty_badlybehave.png') no-repeat;width:142px;height:40px;}
+.l-btn-honesty_modifyopinion {background: url('../Images/Icons/modifyopinion.png') no-repeat;width:142px;height:40px;}
+.l-btn-honesty_rereport {background: url('../Images/Icons/rereport.png') no-repeat;width:142px;height:40px;}
+.l-btn-honesty_report {background: url('../Images/Icons/report.png') no-repeat;width:100px;height:40px;}
+.l-btn-honesty_goback {background: url('../Images/Icons/goback.png') no-repeat;width:100px;height:40px;}
+.l-btn-audit-lock {
+    background: url('../Images/Icons/l-btn-audit-lock.png') no-repeat;width:118px;
+}
+.l-btn-audit {
+    background: url('../Images/Icons/l-btn-audit.png') no-repeat;width:80px;
+}
+/*安检咨询*/
+.l-btn-demonstration_lunzheng {background: url('../Images/Icons/lunzheng.png') no-repeat;width:142px;height:40px;}
+.l-btn-demonstration_qiye {background: url('../Images/Icons/qiye.png') no-repeat;width:150px;height:40px;}
+.l-btn-demonstration_shenqing {background: url('../Images/Icons/shenqing.png') no-repeat;width:100px;height:40px;}
+.l-btn-demonstration_expert {background: url('../Images/Icons/zhuanjia.png') no-repeat;width:150px;height:40px;}
+.l-btn-securityDetection_danwei {background: url('../Images/Icons/danwei.png') no-repeat;width:150px;height:40px;}
+.l-btn-securityDetection_renyuan {background: url('../Images/Icons/renyuan.png') no-repeat;width:150px;height:40px;}
+/*页面标题常用图标*/
+.title-iocn-detail::before {content:url('../Images/Icons/t-detail.png');}
+.person-iocn-detail::before {content:url('../Images/Icons/person-detail.png');}
+.title-iocn-user::before {content:url('../Images/Icons/t-user.png');}
+.title-iocn-engineering::before {content:url('../Images/Icons/t-engineering.png');}
+.title-iocn-company::before {content:url('../Images/Icons/t-company.png');}
+.title-iocn-detail::before,.title-iocn-user::before,.title-iocn-engineering::before,.person-iocn-detail::before,.title-iocn-company::before {
+    _vertical-align:-6px;
+    vertical-align:-6px;
+    width:30px;
+    height:29px;
+    line-height:29px;
+    margin-right:3px;
+}
+
+.icon-select {
+    background: url('../Images/Icons/icon1_15.png') no-repeat center center;
+}
+.icon-add {
+    background: url('../Images/Icons/icon1_13.png') no-repeat center center;
+}
+.icon-map {
+    background: url('../Images/Icons/icon1_30.png') no-repeat center center;
+    width:20px;
+    height:25px;
+}
+.icon-static {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: url('../Images/Icons/icon_static.png') no-repeat;
+}
+
+.icon_menu001 {display: inline-block; width: 55px;height: 55px;background: url('../Images/Icons/menu001.png') no-repeat 50% 50%;}
+.icon_menu002 {display: inline-block;width: 55px;height: 55px;background: url('../Images/Icons/menu002.png') no-repeat 50% 50%;}
+.icon_menu003 {display: inline-block;width: 55px;height: 55px;background: url('../Images/Icons/menu003.png') no-repeat 50% 50%;}
+.icon_menu004 { display: inline-block;width: 55px;height: 55px;background: url('../Images/Icons/menu004.png') no-repeat 50% 50%;}
+.icon_menu005 {display: inline-block;width: 55px;height: 55px;background: url('../Images/Icons/menu005.png') no-repeat 50% 50%;}
+.icon_honesty1 {display: inline-block;width: 55px;height: 55px;background: url('../Images/Icons/honesty1.png') no-repeat 50% 50%;}
+.icon_honesty2 {display: inline-block;width: 55px;height: 55px;background: url('../Images/Icons/honesty2_2.png') no-repeat 50% 50%;}
+.icon_honesty3 {display: inline-block;width: 55px;height: 55px;background: url('../Images/Icons/honesty3_2.png') no-repeat 50% 50%;}
+.icon_honesty4 {display: inline-block;width: 55px;height: 55px;background: url('../Images/Icons/honesty4.png') no-repeat 50% 50%;}
+.icon_honesty5 {display: inline-block;width: 55px;height: 55px;background: url('../Images/Icons/honesty5.png') no-repeat 50% 50%;}
+.icon_honesty6 {display: inline-block;width: 55px;height: 55px;background: url('../Images/Icons/zj.png') no-repeat 50% 50%;}
+.icon_honesty7 {display: inline-block;width: 55px;height: 55px;background: url('../Images/Icons/qy.png') no-repeat 50% 50%;}
+.icon_honesty8 {display: inline-block;width: 55px;height: 55px;background: url('../Images/Icons/Printer.png') no-repeat 50% 50%;}
+.icon_honesty9 {display: inline-block;width: 55px;height: 55px;background: url('../Images/Icons/sbxxgl.png') no-repeat 50% 50%;}
+.icon_honesty10 {display: inline-block;width: 55px;height: 55px;background: url('../Images/Icons/icon_332.png') no-repeat 50% 50%;}
+.icon_honesty11 {display: inline-block;width: 55px;height: 55px;background: url('../Images/Icons/tbsrjsbdy.png') no-repeat 50% 50%;}
+
+.l-btn-securityDetection_danwei {background: url('../Images/Icons/danwei.png') no-repeat;width:150px;height:40px;}
+.l-btn-securityDetection_renyuan {background: url('../Images/Icons/renyuan.png') no-repeat;width:150px;height:40px;}
